@@ -1,0 +1,37 @@
+[auto_router]
+enabled = true
+provider = "jev"
+mode = "auto" # "auto" applies decisions; "shadow" only observes them.
+
+[auto_router.jev]
+model = "~typesafe/jev-latest"
+attempt_timeout_ms = 1200
+max_retries = 1
+total_deadline_ms = 2500
+min_confidence = 0.60
+# Configure an absolute Python path only in your local config when needed:
+# sidecar_command = ["C:\\path\\to\\JevCodex\\.venv\\Scripts\\python.exe", "-m", "jev_codex_router.server"]
+
+[auto_router.routing]
+route_only_when_idle = true
+allow_keep_current = true
+upgrade_min_confidence = 0.60
+downgrade_min_confidence = 0.80
+downgrade_max_context_tokens = 20000
+allowed_models = ["gpt-5.6-luna", "gpt-5.6-sol"]
+min_profile = "luna_medium"
+max_profile = "sol_high"
+allow_luna_high = true
+
+[auto_router.context]
+include_previous_turn_status = true
+include_failure_count = true
+include_previous_prompt = false
+include_diff_stats = false
+include_context_tokens = true
+
+[auto_router.logging]
+enabled = true
+log_prompts = false
+retain_recent_decisions = 20
+store_prompt_text = "session_only" # Use "off" for no in-memory preview.

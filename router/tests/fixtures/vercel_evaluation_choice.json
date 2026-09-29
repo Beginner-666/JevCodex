@@ -1,0 +1,18 @@
+{
+  "model": "typesafe/jev-1.13-20260917",
+  "answers": {
+    "route": {
+      "type": "choice",
+      "choice": "sol_medium",
+      "confidence": 0.8,
+      "probabilities": {
+        "luna_medium": 0.1,
+        "sol_medium": 0.9
+      }
+    }
+  },
+  "usage": {
+    "input_tokens": 100,
+    "output_tokens": 0
+  }
+}
